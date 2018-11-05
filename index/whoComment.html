@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body ng-app>
+    <div ng-init="users=['Benoit','Charlotte','Seb']">
+        <ul>
+            <li ng-repeat="user in users">{{user}}</li>
+        </ul>
+    </div>
+    <input type="number" ng-model="nb1">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+</body>
+</html>
