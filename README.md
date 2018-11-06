@@ -160,7 +160,7 @@ Exemple :
 
 => Dans cet exemple on peut écrire dans une box pour afficher ce qui match avec l'input
 
-+ **orderBy** : trier les données par ordre croissant d'un ou plusieurs
++ **orderBy** : trier les données par ordre croissant (orderBy:'+STAT') ou décroissant (orderBy:'-STAT') d'un ou plusieurs éléments d'un tableau
 
 ```html
 <!doctype html>
