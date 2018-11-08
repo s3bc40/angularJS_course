@@ -188,3 +188,138 @@ Exemple :
 </html>
 ```
 => Ici, on peut trier grâce au menu déroulant **select** et filtrer avec le menu de recherche **input**. On display le nom de l'utilisateur et sa citation !
+
+## 3. Controller & Scope
+
+> Les controllers permettent de **concentrer la logique** de notre application comme dans une structure **MVC** classique. En revanche la notion de Scope est une nouvelle notion."
+
+> Le Scope permet de faire la jointure entre le Controller et la Vue en permettant de transférer les variables dans les 2 sens."  ***Grafikart.fr***
+
+**MVC** = Modèle-vue-contrôleur
+
+> * Un modèle (Model) contient les données à afficher.
+* Une vue (View) contient la présentation de l'interface graphique.
+* Un contrôleur (Controller) contient la logique concernant les actions effectuées par l'utilisateur.
+
+![MVC](https://upload.wikimedia.org/wikipedia/commons/6/63/ModeleMVC.png)
+
+https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur
+
+### a) Le scope
+
+Il permet de faire la liaison entre le Controller et la View.
+Pour créer un contrôleur il suffit de créer une fonction qui a n'importe quel nom, mais par
+convention un met Ctrl à la fin du nomde la focntion.
+
+Exemple :
+
+```javascript
+function monSuperCtrl($scope){
+  $scope.users = [
+    {
+      "username": "Seb",
+      "city": "Meaux"
+    },
+    {
+      "username": "Chacha",
+      "city": "Toulouse"
+    },
+    {
+      "username": "Ben",
+      "city": "Toulouse"
+    }
+  ];
+}
+```
+
+On passe en paramètres un scope. Voyons voir comment ça marche sur les exemples précédents !
+
+```html
+
+<body ng-app="monApp">
+
+  <input type="text" ng-model="search">
+  <select ng-model="order">
+    <option value="username">Organiser par nom</option>
+    <option value="city">Organiser par ville</option>
+  </select>
+
+    <div ng-controller="villeNataleCtrl">
+            <div ng-repeat="comment in comments | filter:{city:search} | orderBy:order">
+              <p>
+                <strong>{{comment.username}}</strong><br>
+                {{comment.city}}
+              </p>
+            </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <script>
+          var app = angular.module("monApp",[]);
+          app.controller('villeNataleCtrl', function ($scope){
+          $scope.comments = [
+            {
+              "username": "Seb",
+              "city": "Meaux"
+            },
+            {
+              "username": "Chacha",
+              "city": "Toulouse"
+            },
+            {
+              "username": "Ben",
+              "city": "Toulouse"
+            }
+          ];
+        });
+    </script>
+</body>
+```
+
+Avec les nouvelles versions de angularJS (>1.3) il faut utiliser une déclaration de variable
+du type :
+```javascript
+angular.module("monApp",[]).controller('monCtrl', function ($scope){code here});)
+```
+
+Pour comprendre la notion de scope il faut voir d'autres exemples.
+
+```html
+
+<body ng-app="monApp">
+
+  <input type="text" ng-model="search">
+  <select ng-model="order">
+    <option value="username">Organiser par nom</option>
+    <option value="city">Organiser par ville</option>
+  </select>
+
+    <div ng-controller="villeNataleCtrl">
+            <div ng-repeat="comment in comments | filter:{city:search} | orderBy:order">
+              <p>
+                <strong>{{comment.username}}</strong><br>
+                {{comment.city}}
+              </p>
+            </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <script>
+          var app = angular.module("monApp",[]);
+          app.controller('villeNataleCtrl', function ($scope){
+          $scope.comments = [
+            {
+              "username": "Seb",
+              "city": "Meaux"
+            },
+            {
+              "username": "Chacha",
+              "city": "Toulouse"
+            },
+            {
+              "username": "Ben",
+              "city": "Toulouse"
+            }
+          ];
+        });
+    </script>
+</body>
+```
