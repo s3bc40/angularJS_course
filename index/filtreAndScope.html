@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body ng-app="monApp">
+
+  <div ng-controller="villeNataleCtrl" ng-init="search='Meaux'">
+    <input type="text" ng-model="search">
+    <select ng-model="order">
+      <option value="username">Organiser par nom</option>
+      <option value="city">Organiser par ville</option>
+    </select>
+
+    <div ng-repeat="comment in comments | filter:{city:search} | orderBy:order">
+      <p>
+        <strong>{{comment.username}}</strong><br>
+        {{comment.city}}<br>
+        <!-- {{comments[3].username="Dave"}}<br>
+        {{comments[3].city="Bordeaux"}}<br> -->
+      </p>
+      <input type="text" ng-model="search">
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+  <script>
+    var app = angular.module("monApp",[]);
+    app.controller('villeNataleCtrl', function ($scope){
+      console.log($scope);
+      $scope.comments = [
+      {
+        "username": "Seb",
+        "city": "Meaux"
+      },
+      {
+        "username": "Chacha",
+        "city": "Toulouse"
+      },
+      {
+        "username": "Ben",
+        "city": "Toulouse"
+      }
+      ];
+    });
+  </script>
+</body>
