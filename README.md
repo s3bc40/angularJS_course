@@ -191,6 +191,8 @@ Exemple :
 
 ## 3. Controller & Scope
 
+### a) Insights
+
 > Les controllers permettent de **concentrer la logique** de notre application comme dans une structure **MVC** classique. En revanche la notion de Scope est une nouvelle notion."
 
 > Le Scope permet de faire la jointure entre le Controller et la Vue en permettant de transférer les variables dans les 2 sens."  ***Grafikart.fr***
@@ -205,11 +207,11 @@ Exemple :
 
 https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur
 
-### a) Le scope
+### b) Le scope
 
 Il permet de faire la liaison entre le Controller et la View.
 Pour créer un contrôleur il suffit de créer une fonction qui a n'importe quel nom, mais par
-convention un met Ctrl à la fin du nomde la focntion.
+convention un met Ctrl à la fin du nomde la fonction.
 
 Exemple :
 
@@ -282,44 +284,69 @@ angular.module("monApp",[]).controller('monCtrl', function ($scope){code here});
 ```
 
 Pour comprendre la notion de scope il faut voir d'autres exemples.
+Si l'on créée au niveau du **ng-repeat** un nouvel **input** identique à la barre de recherche,
+le scope de ce nouvel input ne sera pas le même que celui de la toute premère barre de recherche.
+Alors qu'avec la première barre on peut écrire dans toutes les autres ce n'est pas le cas lorsque l'on est au niveau de la boucle.
 
-```html
+## 4. Le module
 
-<body ng-app="monApp">
+Garder un système organisé et le rendre réutilisable!
 
-  <input type="text" ng-model="search">
-  <select ng-model="order">
-    <option value="username">Organiser par nom</option>
-    <option value="city">Organiser par ville</option>
-  </select>
+Création d'un module :
 
-    <div ng-controller="villeNataleCtrl">
-            <div ng-repeat="comment in comments | filter:{city:search} | orderBy:order">
-              <p>
-                <strong>{{comment.username}}</strong><br>
-                {{comment.city}}
-              </p>
-            </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
-    <script>
-          var app = angular.module("monApp",[]);
-          app.controller('villeNataleCtrl', function ($scope){
-          $scope.comments = [
-            {
-              "username": "Seb",
-              "city": "Meaux"
-            },
-            {
-              "username": "Chacha",
-              "city": "Toulouse"
-            },
-            {
-              "username": "Ben",
-              "city": "Toulouse"
-            }
-          ];
-        });
-    </script>
-</body>
+```javascript
+var app = angular.module("monApp",[]);
+app.controller('villeNataleCtrl', function ($scope){
+$scope.comments = [
+  {
+    "username": "Seb",
+    "city": "Meaux"
+  },
+  {
+    "username": "Chacha",
+    "city": "Toulouse"
+  },
+  {
+    "username": "Ben",
+    "city": "Toulouse"
+  }
+];
+});
 ```
+
+Au niveau de la ligne :
+```javascript
+var app = angular.module("monApp",[]);
+```
+Le tableau en paramètre permet d'injecter des dépendances. Il existe des modules pré-existants
+qui ne sont pas compris dans angular.min.js comme par exemple **angular-animate.js** . Pour pouvoir importer ce module il suffit d'insérer le script :
+```html
+<script src="https://code.angularjs.org/angularjs/1.6.7/angular-animate.js"></script>
+```
+
+Puis d'écrire :
+```javascript
+var app = angular.module("monApp",['ngAnimate']);
+```
+
+Tips : Utiliser **AngularUI** pour avoir des modules intéressants.
+
+Enfin, il existe une deuxième façon d'écrire la ligne suivante :
+```javascript
+app.controller('villeNataleCtrl', function ($scope){
+  $scope.comments = [
+    ...
+  ];
+  });
+```
+
+Pour pouvoir **minifier** (= réduire le code pour qu'il soit plus rapide à traiter par les navigateurs) le code on utilise la notation :
+```javascript
+app.controller('villeNataleCtrl', [ '$scope', "d'autres noms", function ($scope){
+  $scope.comments = [
+    ...
+  ];
+}]);
+```
+Cela permet d'éviter que les méthodes de minification casse le code.
+
