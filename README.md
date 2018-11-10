@@ -350,3 +350,22 @@ app.controller('villeNataleCtrl', [ '$scope', "d'autres noms", function ($scope)
 ```
 Cela permet d'éviter que les méthodes de minification casse le code.
 
+### 5. Les routes
+
+
+### 6. Les services
+
+Lié à la partie "Model" de la structure **MVC**, va permettre de récupérer les données envoyées par différentes sources et de les envoyer dans les **controllers**. Et, les **controllers** vont se charger de renvoyer ces données dans la **View**.
+
+Ces "models" peuvent prendre 3 formats :
+* Factory
+* Services
+* Provider
+
+Ils différents uniquement par leur façon de fonctionner.
+
+On a créée un module :
+```javascript
+var app = angular.module("monApp",[]);
+```
+
