@@ -7,7 +7,7 @@ Course in French on AngularJS. Bioinformatic Master of Bordeaux.
 **Framework** qui permet de créer des applications JS complexes. SPA (single page application) : application qui fonctionne sur une seule page. Applicationq fluides, navigation facile.  
 **Exemple :** client mail = SPA, youtube avec smartTV.
 
-###Pourquoi ?
+### Pourquoi ?
 Gestion de l'historique, données en AJAX avec des callback : sans framework c'est compliqué (notamment en JS avec la gestion d'objets). Le code serait difficile à lire, et non maintenable.
 Framwork : structure déjà conçu et adapté au navigateur.
 
