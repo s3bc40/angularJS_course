@@ -1,0 +1,13 @@
+<input type="text" ng-model="search">
+<select ng-model="order">
+  <option value="username">Organiser par nom</option>
+  <option value="city">Organiser par ville</option>
+</select>
+
+
+  <div ng-repeat="comment in comments | filter:{city:search} | orderBy:order">
+    <p>
+      <strong>{{comment.username}}</strong><br>
+      {{comment.city}}
+    </p>
+  </div>
