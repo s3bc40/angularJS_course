@@ -31,7 +31,7 @@ Framwork : structure déjà conçu et adapté au navigateur.
 ```
 > Philosophie de AngularJS : rendre le html dynamique ! Modifcation d'attributs, de balises et ajout de nouvelles balises.
 
-**Attention** : beaucoup de notion compliqué à comprendre
+**Attention** : beaucoup de notions compliquées à comprendre
 + Binding
 + MVC
 + Routing
@@ -61,7 +61,7 @@ Framwork : structure déjà conçu et adapté au navigateur.
 
 > C'est une propriété de AngularJS qui permet d'injecter des comportement dans le code HTML.
 
-Plusieurs formes possible : 
+Plusieurs formes possibles :
 + attribut HTML
 + élément HTML
 + class
@@ -160,7 +160,7 @@ Exemple :
 
 => Dans cet exemple on peut écrire dans une box pour afficher ce qui match avec l'input
 
-+ **orderBy** : trier les données par ordre croissant (orderBy:'+STAT') ou décroissant (orderBy:'-STAT') d'un ou plusieurs éléments d'un tableau
++ **orderBy** : trier les données par ordre croissant d'un ou plusieurs
 
 ```html
 <!doctype html>
@@ -350,8 +350,105 @@ app.controller('villeNataleCtrl', [ '$scope', "d'autres noms", function ($scope)
 ```
 Cela permet d'éviter que les méthodes de minification casse le code.
 
-### 5. Les routes
+## 5. Les routes
 
+### a) Les bases
+
+Permet de définir des URLs spécifiques à chaque étape d'une application grâce au module **ngRoute**.
+
+```javascript
+var app = angular.module("monApp",['ngRoute']);
+app.config(function($routeProvider){
+  $routeProvider
+  .when('/',{templateUrl: 'partials/home.html'})
+  .when('/comments',{templateUrl: 'partials/comments.html'})
+  .otherwise({redirectTo: '/'});
+});
+```
+
+Pour configurer les routes que devra utiliser le fichier initial (généralement **index.html** mais sur github **route.html**) on utilise **app.config($routeProvider){ ... };**.
+
+A partir de là il suffit de donner à **$routeProvider** les actions à mener.
+Quand il est à la racine **.when('/',...)** aller à l'URL **'partials/home.html'**.
+
+Pour la deuxième partie on créée dans home.html une référence qui amène aux commentaires.
+```HTML
+<a href="#!/comments">Voir les commentaires</a>
+```
+
+* Remarque : utilisation de **#!** peut être relatif à Windows comme j'ai test sous Windows (dans l'exemple tiré de la vidéo il met seulement **#/comments**)
+
+On peut passer directement le controller en paramètre du .when gérant l'accès à l'url précédente, cela permet de supprimer la **div ng-controller** dans **comments.html**.
+
+### b) Améliorations
+
+Pour améliorer l'apparence de home.html on peut créer un nouvel objet qui contiendra tout un tas de données.
+
+Exemple : Lancer dans JSON generator
+
+```javascript
+[
+    '{{repeat(5, 10)}}', {
+      id: '{{index()}}',
+      name: '{{company()}}',
+      content: '{{lorem(6)}}',
+      comments: [
+        '{{repeat(1, 3)}}',{
+          username:'{{firstName()}}',
+          city:'{{city()}}',
+          content:'{{lorem(5)}}'
+        }  
+      ]
+    }
+]
+````
+
+On met l'objet créée dans un nouveau controller :
+
+```javascript
+app.controller('PostsCtrl', function($scope){
+  $scope.posts = [OBJET ICI]
+
+});
+```
+
+Ensuite on modifie **home.html** en :
+
+```HTML
+<div ng-repeat="post in posts">
+
+  <h1>{{post.name}}</h1>
+
+  <p>{{post.content}}</p>
+
+  <p>
+    <a href="#!/comments">{{post.comments.length}} commentaires</a>
+  </p>
+
+  <hr>
+
+</div>
+```
+
+Et on ajoute le controller dans **route.html** :
+
+```javascript
+.when('/',{templateUrl: 'partials/home.html/',controller:'PostsCtrl'})
+```
+
+A ce stade là les commentaires chargés depuis le link ne sont pas ceux de l'objet **$scope.posts** . Si l'on voulait les afficher il faudrait supprimer le controller **'villeNataleCtrl'** et écrire dans home.html :
+
+```HTML
+<a href="#!/comments/{{post.id}}">{{post.comments.length}} commentaires</a>
+```
+Et enfin modifier dans **route.html** :
+
+```javascript
+.when('/comments/:id',{templateUrl: 'partials/comments.html/',
+controller: 'villeNataleCtrl'})
+```
+
+Les commentaires ne s'affichent pas mais c'est normal car nous avons besoin des **services** présentés au chapitre suivant !
 
 ### 6. Les services
 
@@ -368,4 +465,3 @@ On a créée un module :
 ```javascript
 var app = angular.module("monApp",[]);
 ```
-
