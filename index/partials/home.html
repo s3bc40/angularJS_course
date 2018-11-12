@@ -1,4 +1,4 @@
-<h1>Article #1</h1>
+<!--><h1>Article #1</h1>
 
 <p>Et quoniam inedia gravi adflictabantur, locum petivere Paleas nomine, vergentem in mare,
  valido muro firmatum, ubi conduntur nunc usque commeatus distribui militibus
@@ -10,3 +10,21 @@
 <h2> 3 Commentaires </h2>
 
 <a href="#!/comments">Voir les commentaires</a>
+
+OLD LOOK TO => 
+
+<!-->
+
+<div ng-repeat="post in posts">
+
+  <h1>{{post.name}}</h1>
+
+  <p>{{post.content}}</p>
+
+  <p>
+    <a href="#!/comments/{{post.id}}">{{post.comments.length}} commentaires</a>
+  </p>
+
+  <hr>
+
+</div>
