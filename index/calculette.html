@@ -5,8 +5,8 @@
 </head>
 <body ng-app>
     <div>
-        <input type="number" ng-model="nb1">
-        <input type="number" ng-model="nb2">
+        <input type="number" ng-init="nb1=21" ng-model="nb1">
+        <input type="number" ng-init="nb2=12" ng-model="nb2">
         {{"Somme :" + (nb1 * 1 + nb2 * 1)}}
     </div>
 </body>
