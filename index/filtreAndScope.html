@@ -2,31 +2,50 @@
 <html>
 <head>
   <meta charset="UTF-8">
+   <link rel="stylesheet" href="/css/filtreAndScope.css">
 </head>
 
 <body ng-app="monApp">
 
   <div ng-controller="villeNataleCtrl" ng-init="search=''">
-    <p>Rechercher une ville<br>
+    <p>Rechercher une ville</br>
     <input type="text" ng-model="search">
     </p>
 
-  <p>Menu pour modifier le classement<br>
+
+  <p>Menu pour modifier le classement</br>
     <select ng-model="order">
       <option value="username">Organiser par nom</option>
       <option value="city">Organiser par ville</option>
       <option value="note">Organiser par note</option>
     </select>
   </p>
-
-    <div ng-repeat="comment in comments | filter:{city:search} | orderBy:order">
-      <p>
+<hr>
+Classement par ordre croissant:
+<hr>
+<ol class="columns">
+    <div id=colonne1 ng-repeat="comment in comments | filter:{city:search} | orderBy:order">
+      <li>
         <strong>{{comment.username}}</strong><br>
         Ville: {{comment.city}}<br>
         Note: {{comment.note}}<br>
-      </p>
-      <input type="text" ng-model="search">
+      </li>
     </div>
+</ol>
+  <hr>
+  Classement par ordre décroissant:
+  <hr>
+<ol class="columns">
+    <div id=colonne2 ng-repeat="comment in comments | filter:{city:search} | orderBy:order:reverse=true">
+      <li>
+        <strong>{{comment.username}}</strong><br>
+        Ville: {{comment.city}}<br>
+        Note: {{comment.note}}<br>
+      </li>
+    </div>
+</ol>
+<hr>
+
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
   <script>
