@@ -7,18 +7,23 @@
 <body ng-app="monApp">
 
   <div ng-controller="villeNataleCtrl" ng-init="search='Meaux'">
+    <p>Rechercher une ville<br>
     <input type="text" ng-model="search">
+    </p>
+
+  <p>Menu pour modifier le classement<br>
     <select ng-model="order">
       <option value="username">Organiser par nom</option>
       <option value="city">Organiser par ville</option>
+      <option value="note">Organiser par note</option>
     </select>
+  </p>
 
     <div ng-repeat="comment in comments | filter:{city:search} | orderBy:order">
       <p>
         <strong>{{comment.username}}</strong><br>
-        {{comment.city}}<br>
-        <!-- {{comments[3].username="Dave"}}<br>
-        {{comments[3].city="Bordeaux"}}<br> -->
+        Ville: {{comment.city}}<br>
+        Note: {{comment.note}}<br>
       </p>
       <input type="text" ng-model="search">
     </div>
@@ -29,19 +34,80 @@
     app.controller('villeNataleCtrl', function ($scope){
       console.log($scope);
       $scope.comments = [
-      {
-        "username": "Seb",
-        "city": "Meaux"
-      },
-      {
-        "username": "Chacha",
-        "city": "Toulouse"
-      },
-      {
-        "username": "Ben",
-        "city": "Toulouse"
-      }
+        {
+          "username": "Batman",
+          "city": "Gotham City",
+          "note": 7
+        },
+        {
+          "username": "Superman",
+          "city": "Kryptonopolis",
+          "note": 18
+        },
+        {
+          "username": "Aquaman",
+          "city": "Atlantis",
+          "note": 1
+        },
+        {
+          "username": "Deadpool",
+          "city": "Sedona",
+          "note": 3
+        },
+        {
+          "username": "Iron Man",
+          "city": "Seattle",
+          "note": 3
+        },
+        {
+          "username": "Spiderman",
+          "city": "New-York",
+          "note": 6
+        },
+        {
+          "username": "Robin",
+          "city": "Gotham City",
+          "note": 17
+        },
+        {
+          "username": "Arthur",
+          "city": "Kaamelott",
+          "note": 4
+        },
+        {
+          "username": "David Goodenough",
+          "city": "Atari",
+          "note": 2
+        },
+        {
+          "username": "Roparzh",
+          "city": "Kaamelott",
+          "note": 20
+        },
+        {
+          "username": "Guethenoc",
+          "city": "Kaamelott",
+          "note": 19
+        },
+        {
+          "username": "Guenièvre",
+          "city": "Carmélide",
+          "note": 17
+        },
+        {
+          "username": "Léodagan",
+          "city": "Carmélide",
+          "note": 1
+        },
+        {
+          "username": "Perceval",
+          "city": "Pays de Galles",
+          "note": 18
+        },
+        {
+          "username": "Bohort",
+          "city": "Kaamelott",
+          "note": 1
+        }
       ];
     });
-  </script>
-</body>
