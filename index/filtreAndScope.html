@@ -6,12 +6,12 @@
 
 <body ng-app="monApp">
 
-  <div ng-controller="villeNataleCtrl" ng-init="search='Meaux'">
-    <p>Rechercher une ville<br>
+  <div ng-controller="villeNataleCtrl" ng-init="search=''">
+    <p>Rechercher une ville</br>
     <input type="text" ng-model="search">
     </p>
 
-  <p>Menu pour modifier le classement<br>
+  <p>Menu pour modifier le classement</br>
     <select ng-model="order">
       <option value="username">Organiser par nom</option>
       <option value="city">Organiser par ville</option>
@@ -111,3 +111,5 @@
         }
       ];
     });
+  </script>
+</body>
