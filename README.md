@@ -159,7 +159,7 @@ Exemple :
 <head>
 </head>
 <body ng-app>
-  <input type="number" ng-model="search">
+  <input type="string" ng-model="search" ng-init="search='cha'">
     <div ng-init="users=['Benoit','Charlotte','Seb']">
         <ul>
             <li ng-repeat="user in users | filter:search">{{user | uppercase}}</li>
