@@ -153,7 +153,7 @@ Classement par ordre croissant:
     });
   </script>
 </body>
-
+</html>
 ```
 Hints:
 - La barre de recherche est un simple **input** avec **ng-model** comme variable de recherche
@@ -165,9 +165,51 @@ Rendu :
 ![Image filtres](https://raw.githubusercontent.com/s3bc40/angularJS_course/master/index/img/angularfiltre.png)
 
 
+## Exercice 3) **Créez votre controlleur**
+```html
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/css/filtreAndScope.css">
+    </head>
+
+    <body ng-app="monApp">
+
+    <input type="text" ng-model="search">
+    <select ng-model="order">
+        <option value="name">Organiser par nom</option>
+        <option value="attaque">Organiser par attaque</option>
+        <option value="PC">Organiser par PC Max</option>
+    </select>
+
+    <div ng-controller="pokemonGO">
+        <div ng-repeat="pokemon in pokemons | filter:{name:search} | orderBy:order">
+            <p>
+                <strong>{{pokemon.name}}</strong><br>
+                {{pokemon.attaque}}<br>
+                {{pokemon.PC}}
+            </p>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+
+    <script>
+      ECRIRE LE CONTROLLEUR ICI
+    </script>
+  </body>
+</html>
+```
+Voici un pseudo-pokédex pokémonGO codé avec AngularJS. Le but est de créer le controller **pokemonGO** afin d'afficher le résultat suivant : 
 
 
 
+Afin d'obtenir les caractéristiques demandées des pokémons, je vous propose de consulter ce site : [pokeBip.com](https://www.pokebip.com/page__jeuxvideo__pokemon_go__stats_pokemon.html). Au minimum, essayez d'avoir 3 pokémons d'affichés sur votre page web.
+
+Hints : 
+- Inspirez vous de l'exercice 2 pour pouvoir écrire votre controlleur.
+- La liste sera représenté par [] et les pokémons à l'intérieurs seront des objets {}
+- Prenez vos pokémons préférés ! 
 
 
 

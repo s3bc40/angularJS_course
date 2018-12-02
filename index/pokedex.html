@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/css/filtreAndScope.css">
+    </head>
+
+    <body ng-app="monApp">
+
+    <input type="text" ng-model="search">
+    <select ng-model="order">
+        <option value="name">Organiser par nom</option>
+        <option value="attaque">Organiser par attaque</option>
+        <option value="PC">Organiser par PC Max</option>
+    </select>
+
+    <div ng-controller="pokemonGO">
+        <div ng-repeat="pokemon in pokemons | filter:{name:search} | orderBy:order">
+            <p>
+                <strong>{{pokemon.name}}</strong><br>
+                {{pokemon.attaque}}<br>
+                {{pokemon.PC}}
+            </p>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <script>
+        var app = angular.module("monApp",[]);
+        app.controller('pokemonGO', function ($scope){
+        console.log($scope);
+        $scope.pokemons = [
+        {
+            "name": "Bulbizarre",
+            "attaque": 118,
+            "PC": 1115
+        },
+        {
+            "name": "Salameche",
+            "attaque": 116,
+            "PC": 980
+        },
+        {
+            "name": "Carapuce",
+            "attaque": 94,
+            "PC": 946
+        },
+        {
+            "name": "Evoli",
+            "attaque": 104,
+            "PC": 1071
+        },
+        {
+            "name": "Pikachu",
+            "attaque": 112,
+            "PC": 938
+        }];
+        });
+        </script>
+</body>
