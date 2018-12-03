@@ -47,9 +47,9 @@ Solution :
 
   <div ng-controller="villeNataleCtrl" ng-init="search=''">
 
-    ICI => Première barre de recherche dans un paragraphe
+    <!--ICI => Première barre de recherche dans un paragraphe
 
-    ICI => Menu déroulant à 3 options : tri par nom/ville/note
+    ICI => Menu déroulant à 3 options : tri par nom/ville/note-->
 
 <hr>
 Classement par ordre croissant:
@@ -58,16 +58,16 @@ Classement par ordre croissant:
     <div id=colonne1 ng-repeat="on veut parcourir la variable
     comments et associer des filtres directement sur cette boucle">
       <li>
-        <strong>USERNAME</strong><br>
+        <!--<strong>USERNAME</strong><br>
         VILLE<br>
-        NOTE<br>
+        NOTE<br>-->
       </li>
     </div>
 </ol>
   <hr>
   Classement par ordre décroissant:
   <hr>
-  MEME CHOSE QU'AVANT MAIS AVEC UN TRI EN SENS INVERSE
+  <!--MEME CHOSE QU'AVANT MAIS AVEC UN TRI EN SENS INVERSE-->
 <hr>
 
   </div>
