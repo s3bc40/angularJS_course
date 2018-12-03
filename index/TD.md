@@ -1,5 +1,8 @@
 # ***TD AngularJS***
 
+- Importer le repositery : git clone https://github.com/s3bc40/angularJS_course.git
+- [Api de AngularJS pour les nuls](https://docs.angularjs.org/api)
+
 ## Exercice 1) **Créer une calculette**
 
 * Créer un fichier html et le remplir avec le bout de code ci-dessous
