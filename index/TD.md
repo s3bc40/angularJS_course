@@ -210,7 +210,7 @@ Voici un pseudo-pokédex pokémonGO codé avec AngularJS. Le but est de créer l
 Afin d'obtenir les caractéristiques demandées des pokémons, je vous propose de consulter ce site : [pokeBip.com](https://www.pokebip.com/page__jeuxvideo__pokemon_go__stats_pokemon.html). Au minimum, essayez d'avoir 3 pokémons d'affichés sur votre page web.
 
 Hints : 
-- Inspirez vous de l'**exercice 2**pour pouvoir écrire votre controlleur.
+- Inspirez vous de l'**exercice 2** pour pouvoir écrire votre controlleur.
 - La **liste** sera représenté par [] et les pokémons à l'intérieurs seront des **objets** {}
 - Prenez vos pokémons préférés ! 
 
