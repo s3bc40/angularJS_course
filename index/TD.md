@@ -205,7 +205,7 @@ Rendu :
 ```
 Voici un pseudo-pokédex pokémonGO codé avec AngularJS. Le but est de créer le controller **pokemonGO** afin d'afficher le résultat suivant : 
 
-![Image pokedex Go](https://raw.githubusercontent.com/s3bc40/angularJS_course/master/index/img/Screenshot_2018-12-02%20Screenshot.png)
+![Image pokedex Go](https://raw.githubusercontent.com/s3bc40/angularJS_course/master/index/img/resultController.png)
 
 Afin d'obtenir les caractéristiques demandées des pokémons, je vous propose de consulter ce site : [pokeBip.com](https://www.pokebip.com/page__jeuxvideo__pokemon_go__stats_pokemon.html). Au minimum, essayez d'avoir 3 pokémons d'affichés sur votre page web.
 
