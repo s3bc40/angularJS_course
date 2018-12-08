@@ -1,4 +1,4 @@
-#Diapo pour l'oral M2
+# Diapo pour l'oral M2
 
 https://docs.google.com/presentation/d/1vbDEVJkpi1Byvu8XVBpMBsdgFFEwVJprJGpWEwaOuZo/edit?fbclid=IwAR102i31sx7q5hhe0HhEVeH7Yw0FxIHlPGfqZyeS96HImYeD11SARHFbAsc#slide=id.g4a3db9c77a_2_9
 
