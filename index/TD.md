@@ -1,5 +1,7 @@
 # ***TD AngularJS***
 
+**Auteurs: Benoît Bothorel, Sébastien Gonçalves-Claro, Charlotte Gonçalves-Frasco**
+
 - Importer le repositery : git clone https://github.com/s3bc40/angularJS_course.git
 - [Api de AngularJS pour les nuls](https://docs.angularjs.org/api)
 
